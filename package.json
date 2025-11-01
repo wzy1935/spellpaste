@@ -1,5 +1,5 @@
 {
-  "name": "paste",
+  "name": "spellpaste",
   "private": true,
   "version": "0.1.0",
   "type": "module",
@@ -13,8 +13,10 @@
     "@reactuses/core": "^6.1.1",
     "@tailwindcss/vite": "^4.1.16",
     "@tauri-apps/api": "^2",
+    "@tauri-apps/plugin-fs": "^2.4.4",
     "@tauri-apps/plugin-global-shortcut": "^2.3.0",
-    "@tauri-apps/plugin-opener": "^2",
+    "@tauri-apps/plugin-opener": "^2.5.2",
+    "@tauri-apps/plugin-process": "^2.3.1",
     "promise-worker": "^2.0.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",

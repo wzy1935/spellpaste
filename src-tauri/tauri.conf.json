@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "paste",
+  "productName": "spellpaste",
   "version": "0.1.0",
-  "identifier": "com.wzy1935.paste",
+  "identifier": "com.wzy1935.spellpaste",
   "build": {
     "beforeDevCommand": "npm run dev",
     "devUrl": "http://localhost:1420",
@@ -12,10 +12,10 @@
   "app": {
     "windows": [
       {
-        "title": "paste",
+        "title": "spellpaste",
         "width": 800,
         "height": 600,
-        "visible": true
+        "visible": false
       }
     ],
     "security": {
@@ -42,7 +42,38 @@
             "global-shortcut:allow-is-registered",
             "global-shortcut:allow-register",
             "global-shortcut:allow-unregister",
-            "global-shortcut:allow-unregister-all"
+            "global-shortcut:allow-unregister-all",
+            "fs:default",
+            "fs:read-all",
+            "fs:write-all",
+            "fs:allow-rename",
+            "fs:allow-mkdir",
+            "fs:allow-exists",
+            "fs:allow-watch",
+            "fs:read-dirs",
+            "process:default",
+            {
+              "identifier": "fs:scope",
+              "allow": [
+                {
+                  "path": "$APPDATA"
+                },
+                {
+                  "path": "$APPDATA/**/*"
+                }
+              ]
+            },
+            {
+              "identifier": "opener:allow-open-path",
+              "allow": [
+                {
+                  "path": "$APPDATA"
+                },
+                {
+                  "path": "$APPDATA/**/*"
+                }
+              ]
+            }
           ]
         }
       ]
