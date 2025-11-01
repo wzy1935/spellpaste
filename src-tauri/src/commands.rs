@@ -3,8 +3,8 @@ use enigo::{
     Direction::{Click, Press, Release},
     Enigo, Key, Keyboard, Settings,
 };
-use tokio::time::{sleep, Duration};
 use tauri::command;
+use tokio::time::{sleep, Duration};
 
 #[command]
 pub async fn paste(content: &str) -> Result<(), ()> {
@@ -14,6 +14,7 @@ pub async fn paste(content: &str) -> Result<(), ()> {
     sleep(Duration::from_millis(50)).await;
 
     let mut enigo = Enigo::new(&Settings::default()).unwrap();
+
     enigo.key(Key::Control, Press).unwrap();
     enigo.key(Key::Unicode('v'), Click).unwrap();
     enigo.key(Key::Control, Release).unwrap();
@@ -24,7 +25,9 @@ pub async fn paste(content: &str) -> Result<(), ()> {
 #[command]
 pub async fn copy() -> Result<String, ()> {
     let mut enigo = Enigo::new(&Settings::default()).unwrap();
+
     enigo.key(Key::Control, Press).unwrap();
+    enigo.key(Key::Alt, Release).unwrap();
     enigo.key(Key::Unicode('c'), Click).unwrap();
     enigo.key(Key::Control, Release).unwrap();
 

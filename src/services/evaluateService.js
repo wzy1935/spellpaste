@@ -5,10 +5,15 @@ const worker = new Worker(new URL('./sandboxWorker.js', import.meta.url), {
 });
 const promiseWorker = new PromiseWorker(worker)
 
-async function evaluate(code, content) {
-  return promiseWorker.postMessage({code, content})
+async function safeEval(code, content) {
+  return promiseWorker.postMessage({ code, content })
+}
+
+async function unsafeEval(code, content) {
+  return await (async () => eval(code))();
 }
 
 export default {
-  evaluate
+  safeEval,
+  unsafeEval
 }

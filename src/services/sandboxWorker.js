@@ -1,4 +1,4 @@
-// An webworker script, used by sandbox.js only
+// An webworker script, used by evaluate.js only
 import 'ses';
 import registerPromiseWorker from 'promise-worker/register'
 
