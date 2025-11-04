@@ -18,6 +18,8 @@
         "visible": false
       }
     ],
+    "withGlobalTauri": true,
+    "macOSPrivateApi": true,
     "security": {
       "csp": null,
       "capabilities": [
