@@ -3,6 +3,7 @@ import { Menu } from '@tauri-apps/api/menu';
 import { defaultWindowIcon } from '@tauri-apps/api/app';
 import { exit, relaunch } from '@tauri-apps/plugin-process';
 import localFileService from './localFileService';
+import windowService from './windowService';
 
 const menuOptions = {
   items: [
@@ -13,20 +14,20 @@ const menuOptions = {
         await localFileService.openSpellFile()
       }
     },
-    // {
-    //   id: 'welcome',
-    //   text: 'Open welcome page',
-    //   action: () => {
-    //     console.log('OPEN WELCOME PAGE')
-    //   }
-    // },
-    // {
-    //   id: 'settings',
-    //   text: 'Open settings',
-    //   action: () => {
-    //     console.log('OPEN SETTINGS')
-    //   }
-    // },
+    {
+      id: 'onboarding',
+      text: 'Open onboarding page',
+      action: async () => {
+        await windowService.openOnboardingPage()
+      }
+    },
+    {
+      id: 'settings',
+      text: 'Open settings',
+      action: async () => {
+        await windowService.openSettingPage()
+      }
+    },
     {
       id: 'quit',
       text: 'Quit',

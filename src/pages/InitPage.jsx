@@ -1,10 +1,16 @@
 import { useOnceEffect } from '@reactuses/core'
 import localFileService from '../services/localFileService';
 import trayService from '../services/trayService';
+import windowService from '../services/windowService';
+import hotkeyService from '../services/hotkeyService';
 
 async function init() {
   await trayService.init()
   await localFileService.init()
+  await localFileService.initPerWebview()
+  await windowService.init()
+  await hotkeyService.init()
+
 }
 
 function InitPage() {
@@ -14,8 +20,8 @@ function InitPage() {
 
 
   return (<>
-    <div className=" bg-amber-200">
-      init page, for dev test only
+    <div className=" h-screen w-screen flex justify-center items-center">
+      init
     </div>
   </>)
 }

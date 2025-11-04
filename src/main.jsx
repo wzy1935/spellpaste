@@ -4,9 +4,9 @@ import { createBrowserRouter } from "react-router";
 import { RouterProvider } from "react-router/dom";
 import './App.css'
 
-import HomePage from './pages/HomePage'
-import MainPage from './pages/MainPage'
-import SettingsPage from './pages/SettingsPage'
+import OnboardingPage from './pages/OnboardingPage'
+import SpellPage from './pages/SpellPage'
+import SettingPage from './pages/SettingPage'
 import InitPage from './pages/InitPage'
 
 const router = createBrowserRouter([
@@ -15,16 +15,16 @@ const router = createBrowserRouter([
     element: <InitPage />,
   },
   {
-    path: "/home",
-    element: <HomePage />,
+    path: "/onboarding",
+    element: <OnboardingPage />,
   },
   {
-    path: "/main",
-    element: <MainPage />,
+    path: "/spells",
+    element: <SpellPage />,
   },
   {
     path: "/settings",
-    element: <SettingsPage />,
+    element: <SettingPage />,
   },
 ]);
 
