@@ -30,20 +30,8 @@
             "*"
           ],
           "permissions": [
-            "core:window:default",
             "core:window:allow-create",
-            "core:window:allow-hide",
-            "core:window:allow-show",
-            "core:window:allow-set-focus",
-            "core:window:allow-set-closable",
-            "core:window:allow-unminimize",
-            "core:window:allow-set-size",
-            "core:window:allow-center",
             "core:webview:allow-create-webview",
-            "core:webview:allow-set-webview-auto-resize",
-            "core:webview:allow-get-all-webviews",
-            "core:webview:default",
-            "core:webview:allow-set-webview-focus",
             "core:app:allow-default-window-icon",
             "core:tray:allow-new",
             "core:tray:default",
@@ -51,6 +39,8 @@
             "core:menu:default",
             "core:path:allow-resolve",
             "core:path:default",
+            "core:window:allow-hide",
+            "core:window:allow-show",
             "global-shortcut:allow-is-registered",
             "global-shortcut:allow-register",
             "global-shortcut:allow-unregister",
@@ -64,8 +54,6 @@
             "fs:allow-watch",
             "fs:read-dirs",
             "process:default",
-            "core:event:allow-listen",
-            "core:event:default",
             {
               "identifier": "fs:scope",
               "allow": [

@@ -1,4 +1,4 @@
-import useSpellStore from "../stores/spellStore"
+import useItemStore from "../stores/spellStore"
 import evaluateService from "./evaluateService"
 import { invoke } from "@tauri-apps/api/core"
 
@@ -8,8 +8,7 @@ async function copy() {
 }
 
 async function paste(spellId, content) {
-  const spell = useSpellStore.getState().getSpell(spellId)
-  console.log(useSpellStore.getState())
+  const spell = useItemStore.getState().getSpell(spellId)
 
   if (spell.type === 'safe-script') {
     const result = await evaluateService.safeEval(spell.content, content)
