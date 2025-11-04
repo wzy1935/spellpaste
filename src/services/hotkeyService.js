@@ -1,9 +1,11 @@
-import { register, unregisterAll } from '@tauri-apps/plugin-global-shortcut';
+import { register, unregister, unregisterAll, isRegistered } from '@tauri-apps/plugin-global-shortcut';
 import useSpellStore from '../stores/spellStore';
 import spellService from './spellService';
+import windowService from './windowService';
 
 async function refreshAllSpells() {
   await unregisterAll()
+  await registerMainShortcut()
   const spellItems = useSpellStore.getState().items
   spellItems.forEach(async item => {
     if (!item.shortcut) return
@@ -17,6 +19,22 @@ async function refreshAllSpells() {
   })
 }
 
+async function registerMainShortcut() {
+  if (await isRegistered("CommandOrControl+Space")) {
+    await unregister("CommandOrControl+Space")
+  }
+  await register("CommandOrControl+Space", async (event) => {
+    if (event.state === "Pressed") {
+      await windowService.showSpellPage()
+    }
+  })
+}
+
+async function init() {
+  await registerMainShortcut()
+}
+
 export default {
-  refreshAllSpells
+  refreshAllSpells,
+  init
 }
