@@ -6,6 +6,12 @@ use enigo::{
 use tauri::command;
 use tokio::time::{sleep, Duration};
 
+#[cfg(target_os = "macos")]
+const CONTROL_KEY: Key = Key::Meta;
+
+#[cfg(not(target_os = "macos"))]
+const CONTROL_KEY: Key = Key::Control;
+
 #[command]
 pub async fn paste(content: &str) -> Result<(), ()> {
     let mut ctx: ClipboardContext = ClipboardProvider::new().unwrap();
@@ -15,9 +21,9 @@ pub async fn paste(content: &str) -> Result<(), ()> {
 
     let mut enigo = Enigo::new(&Settings::default()).unwrap();
 
-    enigo.key(Key::Control, Press).unwrap();
+    enigo.key(CONTROL_KEY, Press).unwrap();
     enigo.key(Key::Unicode('v'), Click).unwrap();
-    enigo.key(Key::Control, Release).unwrap();
+    enigo.key(CONTROL_KEY, Release).unwrap();
 
     Ok(())
 }
@@ -26,10 +32,10 @@ pub async fn paste(content: &str) -> Result<(), ()> {
 pub async fn copy() -> Result<String, ()> {
     let mut enigo = Enigo::new(&Settings::default()).unwrap();
 
-    enigo.key(Key::Control, Press).unwrap();
+    enigo.key(CONTROL_KEY, Press).unwrap();
     enigo.key(Key::Alt, Release).unwrap();
     enigo.key(Key::Unicode('c'), Click).unwrap();
-    enigo.key(Key::Control, Release).unwrap();
+    enigo.key(CONTROL_KEY, Release).unwrap();
 
     sleep(Duration::from_millis(50)).await;
 
