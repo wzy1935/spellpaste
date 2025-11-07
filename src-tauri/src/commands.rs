@@ -22,7 +22,7 @@ pub async fn paste(content: &str) -> Result<(), ()> {
     let mut enigo = Enigo::new(&Settings::default()).unwrap();
 
     enigo.key(CONTROL_KEY, Press).unwrap();
-    enigo.key(Key::Unicode('v'), Click).unwrap();
+    enigo.key(Key::Other(0x09), Click).unwrap();
     enigo.key(CONTROL_KEY, Release).unwrap();
 
     Ok(())
@@ -34,7 +34,7 @@ pub async fn copy() -> Result<String, ()> {
 
     enigo.key(CONTROL_KEY, Press).unwrap();
     enigo.key(Key::Alt, Release).unwrap();
-    enigo.key(Key::Unicode('c'), Click).unwrap();
+    enigo.key(Key::Other(0x08), Click).unwrap();
     enigo.key(CONTROL_KEY, Release).unwrap();
 
     sleep(Duration::from_millis(50)).await;
